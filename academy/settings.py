@@ -129,6 +129,7 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "user.User"
 AUTHENTICATION_BACKENDS = [
+    "oauth2_provider.backends.OAuth2Backend",
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
@@ -140,3 +141,6 @@ ACCOUNT_USERNAME_BLACKLIST = ["admin", "rise"]
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_MIN_LENGTH = 3
 ACCOUNT_USERNAME_REQUIRED = False
+
+# might need to change this
+CORS_ORIGIN_ALLOW_ALL = True
