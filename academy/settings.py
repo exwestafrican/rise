@@ -146,3 +146,13 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 # might need to change this
 CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
+    )
+}
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    "SCOPES": {"read": "Can Read Data", "write": "Can Write"}
+}
