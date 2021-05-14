@@ -16,6 +16,7 @@ Django==3.2.3
 django-allauth==0.44.0
 django-cors-middleware==1.5.0
 django-oauth-toolkit==1.5.0
+djangorestframework==3.12.4
 filelock==3.0.12
 identify==2.2.4
 idna==2.10

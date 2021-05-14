@@ -48,6 +48,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "oauth2_provider",
     "corsheaders",
+    "rest_framework",
 ]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
