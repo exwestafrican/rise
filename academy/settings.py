@@ -42,7 +42,12 @@ DJANGO_APPS = [
 
 LOCAL_APPS = ["user"]
 
-THIRD_PARTY_APPS = ["allauth", "allauth.account", "allauth.socialaccount"]
+THIRD_PARTY_APPS = [
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "oauth2_provider",
+]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
