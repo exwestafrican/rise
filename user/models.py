@@ -22,3 +22,10 @@ class Profile(TimeStampMixin):
     contact_number = models.CharField(
         max_length=10, help_text="start number after country code"
     )
+
+
+class Referral(TimeStampMixin):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="referrals"
+    )
+    referral_code = models.CharField(max_length=5)
