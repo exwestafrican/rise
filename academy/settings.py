@@ -12,18 +12,22 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+ROOT_DIR = environ.Path(__file__) - 2  # (rise/academy/setting -2 = rise)
+APPS_DIR = ROOT_DIR.path("academy")
+env = environ.Env()
+env.read_env(str(ROOT_DIR.path(".env")))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-vy*^@j85=7089s_$b1qc)&xe6fkyy=t&r0qw9r_m&e*a9(yyf%"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG", False)
 
 ALLOWED_HOSTS = []
 
@@ -154,6 +158,12 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
 OAUTH2_PROVIDER = {
+    "OIDC_ENABLED": True,
+    "OIDC_RSA_PRIVATE_KEY": env("OIDC_RSA_PRIVATE_KEY"),
     # this is the list of available scopes
-    "SCOPES": {"read": "Can Read Data", "write": "Can Write"}
+    "SCOPES": {
+        "read": "Can Read Data",
+        "write": "Can Write",
+        "openid": "OpenID Connect scope",
+    },
 }
